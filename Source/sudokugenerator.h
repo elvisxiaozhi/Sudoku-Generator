@@ -6,6 +6,8 @@
 #include <QGridLayout>
 #include <QLabel>
 #include <QLineEdit>
+#include <QPushButton>
+#include <QHBoxLayout>
 
 class SudokuGenerator : public QMainWindow
 {
@@ -23,6 +25,9 @@ private:
     QVector<QLineEdit*> sudokuLineEdit;
     QVector<int> posVec;
     QVector<int> numsVec;
+    QLineEdit *lineEditSender;
+    QHBoxLayout *hLayout;
+    QPushButton *restartBtn;
 
     void setBasicLayout();
     void setLabelsAndLineEdits();
@@ -30,6 +35,17 @@ private:
     void filterPos();
     void generateNums();
     void filterNums();
+    void setBottomBar();
+
+signals:
+    void numberAdded();
+    void gameWon();
+
+private slots:
+    void addNum();
+    void checkWin();
+    void playAgain();
+    void restartGame();
 };
 
 #endif // SUDOKUGENERATOR_H
